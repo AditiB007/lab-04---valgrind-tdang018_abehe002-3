@@ -16,9 +16,12 @@ Person::Person(const char *name_, Person* father_, Person* mother_){
 }
 
 Person::~Person(){
-    //for(int i = 0; i < numChildren; ++i){
-    //  delete children[i];
-    //}
+    /*
+    for(int i = 0; i < numChildren; ++i){
+      delete children[i];
+    }
+    */
+    delete[] name;
     delete[] children;
 }
 
