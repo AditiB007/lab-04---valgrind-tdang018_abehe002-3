@@ -65,9 +65,11 @@ char* Person::compute_relation(int level){
     char *temp = strcpy(new char[strlen("grand ") + 1], "grand ");;
     
     for(int i = 2; i <= level; i++){
+        char *anothertemp = temp;
         char *temp2 = new char[strlen("great ") + strlen(temp) + 1];
         strcat(strcpy(temp2, "great "), temp);
         temp = temp2;
+        delete [] anothertemp;
     }
     return temp;
 }
