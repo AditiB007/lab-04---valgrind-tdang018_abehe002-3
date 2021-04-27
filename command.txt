@@ -1,0 +1,1 @@
+g++ -g -O0 -fno-inline *.cpp -o lineage && ./lineage && valgrind --leak-check=full ./lineage
