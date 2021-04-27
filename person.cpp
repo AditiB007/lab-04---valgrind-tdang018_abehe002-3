@@ -16,7 +16,13 @@ Person::Person(const char *name_, Person* father_, Person* mother_){
 }
 
 Person::~Person(){
-    delete children;
+    /*
+    for(int i = 0; i < numChildren; ++i){
+      delete children[i];
+    }
+    */
+    delete[] name;
+    delete[] children;
 }
 
 void Person::addChild(Person *newChild){
@@ -78,8 +84,10 @@ char* Person::compute_relation(int level){
  * NOTE: t's type will be a pointer to an array of pointers
  */
 void expand(Person ***t, int *MAX){
+  Person** oldTemp = *t; // save old reference to previous "children" Person double pointer
   Person **temp = new Person*[2 * *MAX];
   memcpy(temp, *t, *MAX * sizeof(**t));
   *MAX *= 2;
   *t = temp;
+  delete[] oldTemp;
 }
